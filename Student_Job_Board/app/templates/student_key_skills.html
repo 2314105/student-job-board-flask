@@ -1,0 +1,35 @@
+{% extends "base2.html" %} {% block title %} Dashboard {% endblock %} {% block
+content %}
+
+<h1>Add Key Skills</h1>
+
+<form method="POST">
+  <div class="mb-3">
+    <label for="additional_skills" class="form-label">Add Key Skills</label>
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        id="new_skill_input"
+        placeholder="Add A Key Skill"
+      />
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" id="addSkillButton">
+          Add
+        </button>
+      </span>
+    </div>
+  </div>
+
+  <input type="hidden" id="skills_input" name="skills" value="" />
+
+  <div class="mb-3" id="selectedSkillsContainer">
+    <label for="selected_skills" class="form-label"></label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename='js/tag_system.js') }}"
+></script>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base2.html" %} {% block title %} Dashboard {% endblock %} {% block
+content %}
+<h1>Welcome to the student search</h1>
+
+<!-- Form for student search -->
+<form action="/search-for-students" method="GET">
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search for students by skill"
+      aria-label="Search for students by skill"
+      aria-describedby="button-addon2"
+      name="q"
+    />
+    <button class="btn btn-success" type="submit" id="button-addon2">
+      Search
+    </button>
+  </div>
+</form>
+
+{% if students %}
+<div style="display: flex; flex-direction: column; height: calc(100vh - 150px)">
+  <div style="flex: 1; overflow-y: auto">
+    {% for student in students %}
+    <!-- Student listing cards -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <a href="/student-profile?student_id={{ student.student_id }}"
+          >View Profile</a
+        >
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+          <!-- Student details -->
+          <strong>Name:</strong> {{ student.forename }} {{ student.surname }}<br />
+          <strong>Field of Study:</strong> {{ student.field_of_study }}<br />
+          <strong>Degree:</strong> {{ student.degree }}<br />
+          <strong>Skills:</strong>
+          {% for skill in student.skills %}
+          <span class="badge text-bg-success">{{ skill }}</span>
+          {% endfor %}
+        </p>
+        <!-- Add more details or actions if needed -->
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+<p>No students found.</p>
+{% endif %} {% endblock %}

@@ -1,0 +1,153 @@
+{% extends "base2.html" %} {% block title %} Dashboard {% endblock %} {% block
+content %}
+
+<h1>Employer Job listing</h1>
+
+<form method="POST">
+  <div class="mb-3">
+    <label for="title" class="form-label">Job Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      name="title"
+      placeholder="Enter Job Title"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Job Description</label>
+    <textarea
+      class="form-control"
+      id="description"
+      name="description"
+      placeholder="Enter Job Description"
+    ></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="requirements" class="form-label">Job Requirements</label>
+    <textarea
+      class="form-control"
+      id="requirements"
+      name="requirements"
+      placeholder="Enter Job Requirements"
+    ></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="job_type" class="form-label">Job Type</label>
+    <select
+      class="form-select"
+      id="job_type"
+      name="job_type"
+      aria-label="Select Job Type"
+    >
+      <option value="Full-time">Full-time</option>
+      <option value="Part-time">Part-time</option>
+      <option value="Temporary">Temporary</option>
+      <option value="Internship">Internship</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="additional_skills" class="form-label">Add Key Skills</label>
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        id="new_skill_input"
+        placeholder="Add A Key Skill"
+      />
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" id="addSkillButton">
+          Add
+        </button>
+      </span>
+    </div>
+  </div>
+
+  <input type="hidden" id="skills_input" name="skills" value="" />
+
+  <div class="mb-3" id="selectedSkillsContainer">
+    <label for="selected_skills" class="form-label"></label>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Deadline</label>
+    <div class="row">
+      <div class="col">
+        <input
+          type="number"
+          class="form-control"
+          name="day"
+          placeholder="Day"
+          min="1"
+          max="31"
+          required
+        />
+      </div>
+      <div class="col">
+        <input
+          type="number"
+          class="form-control"
+          name="month"
+          placeholder="Month"
+          min="1"
+          max="12"
+          required
+        />
+      </div>
+      <div class="col">
+        <input
+          type="number"
+          class="form-control"
+          name="year"
+          placeholder="Year"
+          min="1900"
+          max="2100"
+          required
+        />
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="location" class="form-label">Location</label>
+    <select class="form-select" id="location" name="location">
+      <option value="London">London</option>
+      <option value="Manchester">Manchester</option>
+      <option value="Birmingham">Birmingham</option>
+      <option value="Leeds">Leeds</option>
+      <option value="Glasgow">Glasgow</option>
+      <option value="Liverpool">Liverpool</option>
+      <option value="Bristol">Bristol</option>
+      <option value="Sheffield">Sheffield</option>
+      <option value="Edinburgh">Edinburgh</option>
+      <option value="Newcastle upon Tyne">Newcastle upon Tyne</option>
+      <option value="Cardiff">Cardiff</option>
+      <option value="Belfast">Belfast</option>
+      <option value="Nottingham">Nottingham</option>
+      <option value="Southampton">Southampton</option>
+      <option value="Oxford">Oxford</option>
+      <option value="Cambridge">Cambridge</option>
+      <option value="Brighton">Brighton</option>
+      <option value="Aberdeen">Aberdeen</option>
+      <option value="York">York</option>
+      <option value="Reading">Reading</option>
+      <!-- Add more options as needed -->
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="salary" class="form-label">Salary</label>
+    <input
+      type="text"
+      class="form-control"
+      id="salary"
+      name="salary"
+      placeholder="Enter Job Salary"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename='js/tag_system.js') }}"
+></script>
+{% endblock %}

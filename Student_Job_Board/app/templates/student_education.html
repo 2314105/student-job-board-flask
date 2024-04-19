@@ -1,0 +1,57 @@
+{% extends "base2.html" %} {% block title %}Student Sign up{% endblock %} {%
+block content %}
+<h1>Student Education</h1>
+<form method="POST">
+  <div class="mb-3">
+    <label for="institution" class="form-label">Educational institution</label>
+    <input
+      type="text"
+      class="form-control"
+      id="institution"
+      name="institution"
+      placeholder="Enter institution"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="study" class="form-label">Field of study</label>
+    <input
+      type="text"
+      class="form-control"
+      id="study"
+      name="study"
+      placeholder="Enter Field of study"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="degree" class="form-label">Degree</label>
+    <select class="form-select" name="degree" id="degree">
+      <option value="Bachelor's">Bachelor's</option>
+      <option value="Master's">Master's</option>
+      <option value="PhD">PhD</option>
+      <option value="Associate's">Associate's</option>
+      <option value="Certificate Program">Certificate Program</option>
+      <option value="Diploma Program">Diploma Program</option>
+      <option value="Professional Degree">Professional Degree</option>
+      <option value="Specialist Degree">Specialist Degree</option>
+      <option value="Honorary Degree">Honorary Degree</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Years attended</label>
+    <div class="row">
+      <div class="col">
+        <input
+          type="number"
+          class="form-control"
+          name="year"
+          placeholder="Year"
+          min="0"
+          max="100"
+          required
+        />
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
+{% endblock %}

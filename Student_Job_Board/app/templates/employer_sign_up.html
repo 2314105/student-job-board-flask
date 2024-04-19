@@ -1,0 +1,145 @@
+{% extends "base.html" %} {% block title %}Employer Sign Up{% endblock %} {%
+block content %}
+
+<br />
+<br />
+<h1>Employer Sign up</h1>
+<br />
+<form method="POST">
+  <div class="mb-3">
+    <label for="company" class="form-label"
+      >Company Name <span class="required">*</span></label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="company"
+      name="company"
+      placeholder="Enter Company Name"
+    />
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="address1" class="form-label"
+        >Address 1 <span class="required">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="address1"
+        name="address1"
+        placeholder="Enter Address 1"
+      />
+    </div>
+    <div class="col">
+      <label for="postal_code1" class="form-label"
+        >Postal Code 1 <span class="required">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="postal_code1"
+        name="postal_code1"
+        placeholder="Enter Postal Code 1"
+      />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="address2" class="form-label">Address 2 </label>
+      <input
+        type="text"
+        class="form-control"
+        id="address2"
+        name="address2"
+        placeholder="Enter Address 2"
+      />
+    </div>
+    <div class="col">
+      <label for="postal_code2" class="form-label">Postal Code 2 </label>
+      <input
+        type="text"
+        class="form-control"
+        id="postal_code2"
+        name="postal_code2"
+        placeholder="Enter Postal Code 2"
+      />
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="phone1" class="form-label"
+      >Phone number 1 <span class="required">*</span></label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="phone1"
+      name="phone1"
+      placeholder="Enter Phone number 1"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="phone2" class="form-label">Phone number 2 </label>
+    <input
+      type="text"
+      class="form-control"
+      id="phone2"
+      name="phone2"
+      placeholder="Enter Phone number 2"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="email1" class="form-label"
+      >Email address 1 <span class="required">*</span></label
+    >
+    <input
+      type="email"
+      class="form-control"
+      id="email1"
+      name="email1"
+      placeholder="Enter Company email 1"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="email2" class="form-label">Email address 2 </label>
+    <input
+      type="email"
+      class="form-control"
+      id="email2"
+      name="email2"
+      placeholder="Enter Company email 2"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="password1" class="form-label"
+      >Password <span class="required">*</span></label
+    >
+    <input
+      type="password"
+      class="form-control"
+      id="password1"
+      name="password1"
+      placeholder="Enter password"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="password2" class="form-label"
+      >(confirm) Password <span class="required">*</span></label
+    >
+    <input
+      type="password"
+      class="form-control"
+      id="password2"
+      name="password2"
+      placeholder="Confirm password"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<style>
+  .required {
+    color: red;
+    margin-left: 5px;
+  }
+</style>
+{% endblock %}

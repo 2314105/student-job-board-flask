@@ -1,0 +1,112 @@
+{% extends "base2.html" %} {% block title %} Employer Dashboard {% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      {% if employer[4] %}
+      <img
+        src="{{ url_for('static', filename='uploads/' + employer[4]) }}"
+        class="rounded"
+        alt="Profile Image"
+        style="width: 250px"
+      />
+      {% endif %} {% if session.get('user_type') == 'employer' %} {% if not
+      employer[4] %}
+      <form
+        method="POST"
+        action="/employer-profile-picture"
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3">
+          <input
+            class="form-control"
+            type="file"
+            id="profile_picture"
+            name="profile_picture"
+          />
+          <button type="submit" class="nav-link text-primary">Upload</button>
+        </div>
+      </form>
+      {% else %}
+      <form
+        method="POST"
+        action="/delete-profile-picture"
+        enctype="multipart/form-data"
+      >
+        <button
+          type="submit"
+          active="delete-profile-picture"
+          class="nav-link text-danger text-end"
+        >
+          Delete photo
+        </button>
+      </form>
+      {% endif %} {% endif %}
+    </div>
+
+    <div class="col-sm-8">
+      {% if session.get('user_type') == 'employer' %}
+      <a class="nav-link text-primary text-end" href="/edit-employer-profile"
+        >Edit Profile</a
+      >
+      {% endif %}
+      <h1>{{ employer[1] }}</h1>
+      <p><br />{{ employer[6] }}</p>
+      <p><br />{{ employer[5] }}</p>
+    </div>
+  </div>
+</div>
+
+<br />
+<br />
+
+<h3>Current Job Listings</h3>
+{% if session.get('user_type') == 'employer' %}
+<a class="nav-link text-primary text-end" href="/job-listing">Add A Listing</a>
+{% endif %}
+<br />
+
+<div class="container">
+  {% if jobs %}
+  <div
+    style="display: flex; flex-direction: column; height: calc(100vh - 150px)"
+  >
+    <div style="flex: 1; overflow-y: auto">
+      {% for job in jobs %}
+      <div class="card mb-3">
+        <div class="card-header">{{ job.title }}</div>
+        <div class="card-body">
+          <p class="card-text">
+            <strong>Description:</strong><br />
+            {{ job.description }}<br /><br />
+            <strong>Requirements:</strong><br />
+            {{ job.requirements }}<br /><br />
+            <strong>Skills:</strong>
+            {% for skill in job.skills %}
+            <span class="badge text-bg-success">{{ skill }}</span>
+            {% endfor %}<br />
+            <strong>Location:</strong> {{ job.location }}<br />
+            <strong>Salary:</strong> {{ job.salary }}<br />
+            <strong>Job Type:</strong> {{ job.job_type }}<br />
+          </p>
+          {% if session.get('user_type') == 'employer' %}
+          <form method="POST" action="/delete-job">
+            <input type="hidden" name="job_id" value="{{ job.id }}" />
+            <button type="submit" class="nav-link text-danger">
+              Delete Listing
+            </button>
+          </form>
+          {% else %}
+          <a href="#" class="btn btn-primary">Apply</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% else %}
+  <p>No job listings available.</p>
+  {% endif %}
+</div>
+
+{% endblock %}

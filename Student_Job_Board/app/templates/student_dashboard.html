@@ -1,0 +1,56 @@
+{% extends "base2.html" %} {% block title %} Dashboard {% endblock %} {% block
+content %}
+<h1>Welcome to the Student Dashboard.</h1>
+
+<!-- Form for job search -->
+<form action="/student-dashboard" method="GET">
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search for jobs by skill"
+      aria-label="Search for jobs by skill"
+      aria-describedby="button-addon2"
+      name="q"
+    />
+    <button class="btn btn-success" type="submit" id="button-addon2">
+      Search
+    </button>
+  </div>
+</form>
+
+{% if jobs %}
+<div style="display: flex; flex-direction: column; height: calc(100vh - 150px)">
+  <div style="flex: 1; overflow-y: auto">
+    {% for job in jobs %}
+    <!-- Job listing cards -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <a href="/employer-profile?employer_id={{ job.employer_id }}"
+          >View Profile</a
+        >
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+          <!-- Job details -->
+          <strong>Title:</strong> {{ job.title }}<br />
+          <strong>Company:</strong> {{ job.company }}<br />
+          <strong>Description:</strong> {{ job.description }}<br />
+          <strong>Requirements:</strong> {{ job.requirements }}<br />
+          <strong>Location:</strong> {{ job.location }}<br />
+          <strong>Salary:</strong> {{ job.salary }}<br />
+          <strong>Job Type:</strong> {{ job.job_type }}<br />
+          <strong>Skills:</strong>
+          {% for skill in job.skills %}
+          <span class="badge text-bg-success">{{ skill }}</span>
+          {% endfor %}
+        </p>
+        <a href="#" class="btn btn-primary">Apply</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+<p>No job listings available.</p>
+{% endif %} {% endblock %}

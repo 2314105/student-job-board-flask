@@ -1,0 +1,189 @@
+{% extends "base.html" %} {% block title %}Student Edit{% endblock %} {% block
+content %}
+<h1>Student Edit</h1>
+<form method="POST">
+  <div class="row mb-3">
+    <div class="col">
+      <label for="forename" class="form-label"
+        >Forename<span class="required">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="forename"
+        name="forename"
+        placeholder="Enter forename"
+        value="{{ user[1] }}"
+      />
+    </div>
+    <div class="col">
+      <label for="surname" class="form-label"
+        >Surname<span class="required">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="surname"
+        name="surname"
+        placeholder="Enter surname"
+        value="{{ user[2] }}"
+      />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="email_1" class="form-label"
+        >Student email address<span class="required">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="email_1"
+        name="email_1"
+        placeholder="Enter Student email"
+        value="{{ user[18] }}"
+      />
+    </div>
+    <div class="col">
+      <label for="email_2" class="form-label">(Other) email</label>
+      <input
+        type="text"
+        class="form-control"
+        id="email_2"
+        name="email_2"
+        placeholder="Enter Other email"
+        value="{{ user[19] }}"
+      />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="phone1" class="form-label"
+        >Phone number<span class="required">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="phone1"
+        name="phone1"
+        placeholder="Enter Phone number"
+        value="{{ user[16] }}"
+      />
+    </div>
+    <div class="col">
+      <label for="phone2" class="form-label">(Other) number</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phone2"
+        name="phone2"
+        placeholder="Enter Other number"
+        value="{{ user[17] }}"
+      />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="address1" class="form-label"
+        >Address while studying<span class="required">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="address1"
+        name="address1"
+        placeholder="Enter Address 1"
+        value="{{ user[10] }}"
+      />
+    </div>
+    <div class="col">
+      <label for="postal_code1" class="form-label"
+        >Postal Code while studying<span class="required">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="postal_code1"
+        name="postal_code1"
+        placeholder="Enter Postal Code 1"
+        value="{{ user[12] }}"
+      />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="address2" class="form-label">Address 2</label>
+      <input
+        type="text"
+        class="form-control"
+        id="address2"
+        name="address2"
+        placeholder="Enter Address 2"
+        value="{{ user[11] }}"
+      />
+    </div>
+    <div class="col">
+      <label for="postal_code2" class="form-label">Postal Code 2</label>
+      <input
+        type="text"
+        class="form-control"
+        id="postal_code2"
+        name="postal_code2"
+        placeholder="Enter Postal Code 2"
+        value="{{ user[13] }}"
+      />
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Gender : </label>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="gender" id="male"
+      value="Male" {% if user[5] == 'Male' %} checked {% endif %}>
+      <label class="form-check-label" for="male">Male</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="gender" id="female"
+      value="Female" {% if user[5] == 'Female' %} checked {% endif %}>
+      <label class="form-check-label" for="female">Female</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="gender" id="other"
+      value="Other" {% if user[5] == 'Other' %} checked {% endif %}>
+      <label class="form-check-label" for="other"
+        >Other <span class="required">*</span></label
+      >
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="password1" class="form-label"
+      >Password<span class="required">*</span></label
+    >
+    <input
+      type="password"
+      class="form-control"
+      id="password1"
+      name="password1"
+      placeholder="Enter password"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="password2" class="form-label"
+      >(confirm) Password<span class="required">*</span></label
+    >
+    <input
+      type="password"
+      class="form-control"
+      id="password2"
+      name="password2"
+      placeholder="Confirm password"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<style>
+  .required {
+    color: red;
+    margin-left: 5px;
+  }
+</style>
+{% endblock %}

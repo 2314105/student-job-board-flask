@@ -1,0 +1,183 @@
+{% extends "base2.html" %} {% block title %} Student Profile {% endblock %} {%
+block content %}
+<!-- Apply text-center class to center the entire content -->
+<br />
+<br />
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      {% if user[8] %}
+      <img
+        src="static/uploads/{{ user[8] }}"
+        class="rounded"
+        alt="Profile Image"
+        style="width: 250px"
+      />
+
+      {% endif %} {% if session.get('user_type') == 'student' %} {% if not
+      user[8] %}
+      <form
+        method="POST"
+        action="/student-profile-picture"
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3">
+          <input
+            class="form-control"
+            type="file"
+            id="profile_picture"
+            name="profile_picture"
+          />
+          <button type="submit" class="nav-link text-primary">Upload</button>
+        </div>
+      </form>
+      {% else %}
+      <form
+        method="POST"
+        action="/delete-profile-picture"
+        enctype="multipart/form-data"
+      >
+        <button
+          type="submit"
+          active="delete-profile-picture"
+          class="nav-link text-danger text-end"
+        >
+          Delete photo
+        </button>
+      </form>
+      {% endif %} {% endif %}
+    </div>
+
+    <div class="col-sm-8">
+      <div class="container text-end"></div>
+      <ul class="list-group">
+        <!-- Apply text-center class to the entire list -->
+        <li class="list-group-item">
+          <strong>Name:</strong> {{ user[1] }} {{ user[2] }}
+        </li>
+        <li class="list-group-item">
+          <strong>Email:</strong> {{ contact[3] }}
+        </li>
+        <li class="list-group-item">
+          <strong>Date of Birth:</strong> {{ user[4] }}
+        </li>
+        <li class="list-group-item"><strong>Gender:</strong> {{ user[5] }}</li>
+        <li class="list-group-item">
+          <strong>Nationality:</strong> {{ user[6] }}
+        </li>
+      </ul>
+      {% if session.get('user_type') == 'student' %}
+      <a class="nav-link text-primary text-end" href="/edit-student-profile"
+        >Edit Profile</a
+      >
+      {% endif %}
+    </div>
+  </div>
+</div>
+<br />
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="container text-end"></div>
+
+      <ul>
+        {% if session.get('user_type') == 'student' %}
+        <a class="nav-link text-primary" href="/student-key-skills"
+          >Add Key Skills</a
+        >
+        {% endif %} {% for skill in skills %}
+        <span class="badge text-bg-success">{{ skill }}</span>
+        {% endfor %} {% if session.get('user_type') == 'student' %}
+        <form method="POST" action="/delete-student-key-skills">
+          <button type="submit" class="nav-link text-danger text-end">
+            Delete Key Skills
+          </button>
+        </form>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<br />
+<br />
+<br />
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Work Experience</h3>
+      <div class="container text-end"></div>
+      <ul>
+        {% for exp in work_experience %}
+        <div class="card mb-3">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+          >
+            <span>{{ exp[1] }}</span>
+            {% if session.get('user_type') == 'student' %}
+            <form method="POST" action="/delete-work-experience/{{ exp[0] }}">
+              <button type="submit" class="nav-link text-danger">Delete</button>
+            </form>
+            {% endif %}
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <strong>Position:</strong> {{ exp[2] }}<br />
+              <strong>Duration:</strong> {{ exp[3] }} years, {{ exp[4] }}
+              months<br />
+              <strong>Responsibility:</strong> {{ exp[5] }}<br />
+            </p>
+          </div>
+        </div>
+        {% endfor %} {% if session.get('user_type') == 'student' %}
+        <a
+          class="nav-link text-primary text-end"
+          href="/student-work-experience"
+          >Add Work Experience</a
+        >
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Education</h3>
+      <div class="container text-end"></div>
+      <ul>
+        {% for edu in education %}
+        <div class="card mb-3">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+          >
+            <span>{{ edu[1] }}</span>
+            {% if session.get('user_type') == 'student' %}
+            <form method="POST" action="/delete-education/{{ edu[0] }}">
+              <button type="submit" class="nav-link text-danger">Delete</button>
+            </form>
+            {% endif %}
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <strong>Field Of Study:</strong> {{ edu[2] }}<br />
+              <strong>Degree:</strong> {{ edu[3] }}<br />
+              <strong>Years attended:</strong> {{ edu[4] }}<br />
+            </p>
+          </div>
+        </div>
+        {% endfor %} {% if session.get('user_type') == 'student' %}
+        <a class="nav-link text-primary text-end" href="/student-education"
+          >Add Education</a
+        >
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

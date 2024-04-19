@@ -1,0 +1,63 @@
+{% extends "base2.html" %} {% block title %}Student Work Experience{% endblock
+%} {% block content %}
+<h1>Student Work Experience</h1>
+<form method="POST">
+  <div class="mb-3">
+    <label for="company" class="form-label">Company</label>
+    <input
+      type="text"
+      class="form-control"
+      id="company"
+      name="company"
+      placeholder="Enter Company"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="position" class="form-label">Position</label>
+    <input
+      type="text"
+      class="form-control"
+      id="position"
+      name="position"
+      placeholder="Enter Position"
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Duration</label>
+    <div class="row">
+      <div class="col">
+        <input
+          type="number"
+          class="form-control"
+          name="year"
+          placeholder="Year"
+          min="0"
+          max="100"
+          required
+        />
+      </div>
+      <div class="col">
+        <input
+          type="number"
+          class="form-control"
+          name="month"
+          placeholder="Month"
+          min="0"
+          max="12"
+          required
+        />
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="responsibility" class="form-label">Responsibility</label>
+    <textarea
+      class="form-control"
+      id="responsibility"
+      name="responsibility"
+      placeholder="Enter Responsibility"
+    ></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
+{% endblock %}
